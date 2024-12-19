@@ -70,11 +70,9 @@ tmux set-option -gq @prefix_highlight_copy_mode_attr "fg=$onedark_black,bg=$oned
 tmux set-option -gq @prefix_highlight_output_prefix "  "
 
 
-# Leer formato de fecha una sola vez al inicio
 time_format=$(tmux show-option -gqv "@onedark_date_format")
-time_format="${time_format:-'%d/%m/%Y'}"  # Si no se obtiene, usar el formato predeterminado
+time_format="${time_format:-'%d/%m/%Y'}"  
 
-# Guardar el estado anterior de status-right para detectar cambios
 previous_status_right=""
 
 render() {

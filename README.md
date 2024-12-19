@@ -3,13 +3,13 @@ A dark tmux color scheme for terminal that support [True Color](https://en.wikip
 
 ## Why?
 
-I wanted both vim and tmux to share the same color scheme.
-I tried [tmuxline.vim](https://github.com/edkolev/tmuxline.vim) but it didn't render the colors correctly.
-Furthermore, with `tmuxline.vim`, you can't control the widgets on right status bar, which is a key feature IMO.
+I wanted both neo vim and tmux to share the same color scheme.
+I forked the original OneDark Pro tmux theme because I wanted to add some widgets
+and improve the scalability of the code.
 
-A picture of my terminal with *@onedark_widgets* set to "*#{package_updates} #{free_mem}*".  
-These widgets are available in [tmux-status-variables](https://github.com/odedlaz/tmux-status-variables).
-![tmux-onedark-theme Preview](https://raw.githubusercontent.com/odedlaz/tmux-onedark-theme/master/preview-terminal.png)
+<https://github.com/odedlaz/tmux-onedark-theme> 
+
+![tmux-onedark-theme Preview](./preview-terminal.png)
 
 ### Set Options
 
@@ -20,28 +20,23 @@ These widgets are available in [tmux-status-variables](https://github.com/odedla
 Widgets can be controlled by setting `@onedark_widgets`, for example:
 
 ```
-set -g @onedark_widgets "#(date +%s)"
+set -g @onedark_widgets "date,git"
 ```
 
 Once set, these widgets will show on the right.
 
-**default**: empty string.
+The available widgets are:
 
-#### Time format
+- date
+- git
+- ip
+- hostname
+- ram
 
-Time format can be controlled by setting `@onedark_time_format`, for example:
+You can chose them in any order.
 
-```
-set -g @onedark_time_format "%I:%M %p"
-```
-
-`%I` - The hour as a decimal number using a 12-hour clock  
-`%M` - The minute as a decimal number  
-`%p` -  Either "AM" or "PM" according to the given time value.
-
-**default**: `%R` - The time in 24-hour notation (%H:%M).
-
-These modifiers were taken from from [strftime manpage](http://man7.org/linux/man-pages/man3/strftime.3.html).
+If you leave one of the 4 available widget spaces empty it will
+display without text, only the color.
 
 #### Date format
 
@@ -65,7 +60,7 @@ These modifiers were taken from from [strftime manpage](http://man7.org/linux/ma
 Add plugin to the list of TPM plugins in `.tmux.conf`:
 
 ```
-set -g @plugin 'odedlaz/tmux-onedark-theme'
+set -g @plugin 'pedrofmu/tmux-onedark-theme'
 ```
 
 Hit `prefix + I` to fetch the plugin and source it.
@@ -75,7 +70,7 @@ Hit `prefix + I` to fetch the plugin and source it.
 Clone the repo:
 
 ```
-$ git clone https://github.com/odedlaz/tmux-onedark-theme /a/path/you/choose
+$ git clone https://github.com/pedrofmu/tmux-onedark-theme /a/path/you/choose
 ```
 
 Add this line to the bottom of `.tmux.conf`:
@@ -103,7 +98,7 @@ $ tmux source-file ~/.tmux.conf
    
 ### Widgets not working
 
-   Make sure that you put the `set -g @plugin 'odedlaz/tmux-onedark-theme'` before other scripts that alter the status line, or they won't be able to pickup the plugin's changes.
+   Make sure that you put the `set -g @plugin 'pedrofmu/tmux-onedark-theme'` before other scripts that alter the status line, or they won't be able to pickup the plugin's changes.
 
 ### True Color
 
